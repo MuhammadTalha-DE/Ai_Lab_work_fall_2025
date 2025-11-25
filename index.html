@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Four - 12x12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Connect Four - 12x12</h1>
+        </header>
+
+        <!-- Game Mode Selection -->
+        <div id="menu" class="menu">
+            <div class="menu-content">
+                <h2>Select Game Mode</h2>
+                <button onclick="startGame('PVP')">Player vs Player</button>
+                <button onclick="startGame('PVC')">Player vs Computer</button>
+                <div class="difficulty-selector">
+                    <label for="difficulty">AI Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="2">Easy</option>
+                        <option value="3" selected>Medium</option>
+                        <option value="4">Hard</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Board -->
+        <div id="game" class="game hidden">
+            <div class="game-info">
+                <div id="turn-indicator" class="turn-indicator">
+                    <span class="player-color green"></span>
+                    <span>Green's Turn</span>
+                </div>
+                <div class="controls">
+                    <button onclick="restartGame()">Restart</button>
+                    <button onclick="showMenu()">Menu</button>
+                </div>
+            </div>
+            
+            <div class="board-container">
+                <div id="board" class="board"></div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOver" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="gameOverTitle">Game Over</h2>
+                <p id="gameOverMessage"></p>
+                <div class="modal-buttons">
+                    <button onclick="restartGame()">Play Again</button>
+                    <button onclick="showMenu()">Main Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
