@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polished Bullet Points — Colored List</title>
+    <!-- Google font — can be removed if offline or undesired -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg:#0f1724; /* dark background */
+            --card:#0b1220;
+            --muted:rgba(255,255,255,0.78);
+            --glass: rgba(255,255,255,0.04);
+
+            /* distinct, accessible colors for each bullet */
+            --c-1: #22c55e; /* green */
+            --c-2: #06b6d4; /* cyan */
+            --c-3: #f97316; /* orange */
+            --c-4: #ef4444; /* red */
+            --c-5: #a78bfa; /* violet */
+
+            --accent: linear-gradient(90deg,var(--c-2),var(--c-3));
+        }
+
+        /* reset & base styles */
+        *{box-sizing:border-box}
+        html,body{height:100%;}
+        body{
+            margin:0;
+            font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            color:var(--muted);
+            background: radial-gradient(1000px 500px at 10% 10%, rgba(99,102,241,0.08), transparent),
+                        radial-gradient(600px 300px at 90% 90%, rgba(16,185,129,0.03), transparent),
+                        var(--bg);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            padding:3rem 1rem;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .wrapper{width:100%;max-width:900px}
+        .hero{margin-bottom:1.25rem;text-align:center}
+        .hero h1{margin:0;font-weight:700;color:#fff;letter-spacing:-0.2px;font-size:1.6rem}
+        .lead{margin:0.5rem 0 0;color:rgba(255,255,255,0.7);font-size:0.98rem}
+
+        .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:1.25rem;border:1px solid rgba(255,255,255,0.04)}
+
+        .card h2{margin:0 0 0.75rem;color: #fff;font-size:1.1rem}
+
+        /* Fancy list: colored dots and nice spacing */
+        .fancy-list{list-style:none;padding:0;margin:0;display:grid;gap:0.6rem}
+        .fancy-list li{
+            display:flex;align-items:center;gap:0.75rem;padding:0.65rem;border-radius:10px;transition:transform .14s ease, box-shadow .14s ease;
+            background:linear-gradient(180deg, rgba(255,255,255,0.013), rgba(255,255,255,0.009));
+            border:1px solid rgba(255,255,255,0.02)
+        }
+
+        .fancy-list li strong{display:inline-block;width:120px;color:rgba(255,255,255,0.95);font-weight:600}
+
+        /* colorful circular marker before each item */
+        .fancy-list li::before{
+            content:'';width:14px;height:14px;border-radius:50%;flex-shrink:0;box-shadow:0 4px 14px rgba(0,0,0,0.35);border:2px solid rgba(255,255,255,0.06)
+        }
+
+        .fancy-list .color-1::before{background:var(--c-1);box-shadow:0 6px 18px color-mix(in srgb, var(--c-1) 45%, transparent)}
+        .fancy-list .color-2::before{background:var(--c-2);box-shadow:0 6px 18px color-mix(in srgb, var(--c-2) 45%, transparent)}
+        .fancy-list .color-3::before{background:var(--c-3);box-shadow:0 6px 18px color-mix(in srgb, var(--c-3) 45%, transparent)}
+        .fancy-list .color-4::before{background:var(--c-4);box-shadow:0 6px 18px color-mix(in srgb, var(--c-4) 45%, transparent)}
+        .fancy-list .color-5::before{background:var(--c-5);box-shadow:0 6px 18px color-mix(in srgb, var(--c-5) 45%, transparent)}
+
+        /* small hover/active states (also keyboard accessible with focus-visible) */
+        .fancy-list li:hover,.fancy-list li:focus-within{transform: translateY(-4px);box-shadow: 0 10px 30px rgba(2,6,23,0.6)}
+
+        .notes{margin-top:0.85rem;color:rgba(255,255,255,0.65);font-size:0.9rem}
+
+        .footer{margin-top:1rem;text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem}
+
+        /* Responsive tweaks */
+        @media (max-width:560px){
+            .fancy-list li{flex-direction:row;align-items:flex-start}
+            .fancy-list li strong{width:100px}
+            .hero h1{font-size:1.25rem}
+        }
+    </style>
+</head>
+<body>
+    <main class="wrapper">
+        <header class="hero">
+            <h1>Polished Bullet Points — Colored and Accessible</h1>
+            <p class="lead">Clean CSS, responsive layout and each list point has a distinct, pleasant color.</p>
+        </header>
+
+        <!-- A visually rich list of bullet points. Each <li> has a color class so items can be styled individually. -->
+        <section class="card">
+            <h2>About me</h2>
+            <ul class="fancy-list" aria-label="About me - highlights">
+                <li class="color-1"><strong>My name is</strong> — Muhammad Talha</li>
+                <li class="color-2"><strong>Role</strong> — Machine Learning Engineer</li>
+                <li class="color-3"><strong>Work</strong> — Train ML models and deploy them into production</li>
+                <li class="color-4"><strong>Current project</strong> — Random Forest based model for used-car price prediction</li>
+                <li class="color-5"><strong>Focus</strong> — Clean, interpretable models and reliable deployments</li>
+            </ul>
+
+            <div class="notes">
+                <p>Tip: To change a list item's color, edit the <code>.color-*</code> CSS variables near the top of the stylesheet.</p>
+            </div>
+        </section>
+
+        <footer class="footer">Made with ❤️ — Clean CSS for readable, colorful bullet points.</footer>
+    </main>
+    
+</body>
+</html>
